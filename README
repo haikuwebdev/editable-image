@@ -1,0 +1,5 @@
+A gem for interacting with online image editors. Currently, only Picnik is 
+supported. This is not a straight API wrapper.
+
+See http://github.com/haikuwebdev/editable_image_sample/ for a sample Rails app
+using attachment_fu and this gem to edit images.

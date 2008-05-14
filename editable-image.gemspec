@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = 'editable-image'
-  spec.version = '0.1'
+  spec.version = '0.11'
   spec.summary = "Interface to web-based image editors."
   spec.author = 'TJ Stankus'
   spec.email = 'tj@haikuwebdev.com'

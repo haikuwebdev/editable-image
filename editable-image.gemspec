@@ -1,13 +1,12 @@
-Gem::Specification.new do |spec|
-  spec.name = 'editable-image'
-  spec.version = '0.12'
-  spec.summary = "Interface to web-based image editors."
-  spec.authors = 'TJ Stankus'
-  spec.email = 'tj@haikuwebdev.com'
-  spec.homepage = 'http://github.com/haikuwebdev/editable-image/'
-  spec.has_rdoc = false
-  spec.files = ['README', 'lib/multipart.rb', 'lib/picnik.rb']
-  spec.test_files = ['test/picnik_test.rb']
-  spec.add_dependency 'mime-types', '>= 1.15'
-  spec.add_dependency 'Shoulda'
+Gem::Specification.new do |s|
+  s.name = 'editable-image'
+  s.version = '0.2'
+  s.summary = 'Simplified interface to web-based image editors.'
+  s.authors = ['TJ Stankus']
+  s.email = 'tj@haikuwebdev.com'
+  s.homepage = 'http://github.com/haikuwebdev/editable-image/'
+  s.has_rdoc = false
+  s.files = ['README', 'editable-image.gemspec', 'lib/multipart.rb', 'lib/picnik.rb', 'test/picnik_test.rb', 'test/files/logo.gif']
+  s.add_dependency('mime-types', '>= 1.15')
+  s.add_dependency('Shoulda', '>= 1.1.1')
 end

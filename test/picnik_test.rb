@@ -72,6 +72,4 @@ class PicnikTest < Test::Unit::TestCase
     end
   end
   
-  
-  
 end

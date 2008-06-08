@@ -19,7 +19,6 @@ class Picnik
           request = Net::HTTP::Post.new('/service/')
           request.multipart_params = request_parameters(file, parameters)
           response = http.request(request)
-          puts response
           url = parse_image_url_from(response)
         end
       end

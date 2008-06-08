@@ -1,7 +1,3 @@
-# http://objo.com/2007/11/14/it-s-not-about-testing-private-methods
-# http://jasonrudolph.com/blog/2007/11/02/evan-phoenix-on-testing-private-methods-in-ruby/
-# http://blog.jayfields.com/2007/11/ruby-testing-private-methods.html
-
 require File.dirname(__FILE__) + '/../lib/picnik'
 require 'test/unit'
 require 'shoulda'

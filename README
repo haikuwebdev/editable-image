@@ -1,3 +1,5 @@
+This is currently alpha software.
+
 A gem for interacting with online image editors. Currently, only Picnik is 
 supported. This is not a straight API wrapper.
 

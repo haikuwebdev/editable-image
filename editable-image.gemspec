@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
   s.name = "editable-image"
-  s.version = "0.23"
-  s.date = "2008-07-01"
+  s.version = "0.24"
+  s.date = "2008-07-06"
   s.summary = "Simplified interface to web-based image editors."
   s.email = "tj@haikuwebdev.com"
-  s.homepage = "http://github.com/haikuwebdev/editable-image/"
+  s.homepage = ""
   s.description = "Simplified interface to web-based image editors."
   s.has_rdoc = false
   s.authors = ["TJ Stankus"]

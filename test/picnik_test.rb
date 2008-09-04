@@ -5,10 +5,6 @@ require 'shoulda'
 
 class PicnikTest < Test::Unit::TestCase
 
-  # TODO:
-  # - Test unexpected response from Picnik with a mock
-  # - Test expected response from Picnik with a mock.
-
   context "Request parameters" do
     setup do
       EditableImage::Picnik.class_eval do
@@ -81,33 +77,64 @@ class PicnikTest < Test::Unit::TestCase
     end
   end
   
-  context "A file" do
-    context "that does not exist" do
-      should "raise an exception" do
-        assert_raise(Errno::ENOENT)  { EditableImage::Picnik.url('bad_filename', {:apikey => 'test'}) }
+  context "A bad filename" do
+    setup do 
+      @filename = 'bad_filename'
+      @parameters = {:apikey => 'test'}
+    end
+    
+    should "raise EditableImage::InvalidFilenameError exception" do
+      assert_raise(EditableImage::InvalidFilenameError) do 
+        EditableImage::Picnik.url(@filename, @parameters)
       end
     end
     
-    context "that is not an image" do
-      should "raise an exception" do
-        @non_image_filename = File.expand_path("files/test.txt")
-        assert_raise(EditableImage::InvalidFileTypeError)  do
-          EditableImage::Picnik.url(@non_image_filename, {:apikey => 'test'})
-        end
+    should "have exception message containing 'no such file'" do
+      begin
+        EditableImage::Picnik.url(@filename, @parameters)
+      rescue EditableImage::InvalidFilenameError => e
+        assert_match /no such file/i, e.message
       end
     end
   end
   
-  context "The apikey" do
+  context "A non-image file" do
     setup do
-      @full_filename = File.expand_path("files/logo.gif")
+      @non_image_filename = File.expand_path("files/test.txt")
+      @parameters = {:apikey => 'test'}
     end
     
-    should "be passed in parameters" do
-      assert_raise(EditableImage::InvalidParametersError) do
-        EditableImage::Picnik.url(@full_filename, {})
+    should "raise EditableImage::InvalidFileTypeError exception" do
+      assert_raise(EditableImage::InvalidFileTypeError)  do
+        EditableImage::Picnik.url(@non_image_filename, @parameters)
+      end
+    end
+    
+    should "have exception message containing 'foo'" do
+      begin
+        EditableImage::Picnik.url(@non_image_filename, @parameters)
+      rescue EditableImage::InvalidFileTypeError => e
+        assert_match /must be an image/i, e.message
       end
     end
   end
   
+  context "A request for url without apikey in parameters" do
+    
+    should "raise EditableImage::InvalidParametersError" do
+      assert_raise(EditableImage::InvalidParametersError) do
+        EditableImage::Picnik.url('some_filename', {})
+      end
+    end
+    
+    should "raise EditableImage::InvalidParametersError exception with message containing 'must include the apikey'" do
+      begin
+        EditableImage::Picnik.url('some_filename', {})
+      rescue EditableImage::InvalidParametersError => e
+        assert_match /must include the apikey/i, e.message
+      end
+    end
+    
+  end
+
 end

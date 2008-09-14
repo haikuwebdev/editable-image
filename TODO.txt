@@ -1,4 +1,5 @@
 * Rdoc
 * BogusService for application testing.
+* Update sample app with tests using BogusService.
 * Implement additional service, which may force a more modular design.
 * Support for direct links for building hrefs.
